@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'rest_framework',
     'dj_rest_auth',
     'dj_rest_auth.registration',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddlaware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,6 +100,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+STOREDES = {
+    'staticfiles':{
+        'BECKEND':'whitenoise.storage.CompressedManifestStaticFilesStorage'
     }
 }
 
